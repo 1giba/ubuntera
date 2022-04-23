@@ -1,0 +1,77 @@
+---
+- hosts: all
+  # connection: local
+  vars_files:
+    - default.config.yml
+  pre_tasks:
+    - name: Include playbook configuration.
+      include_vars: "{{ item }}"
+      with_fileglob:
+        - "{{ playbook_dir }}/config.yml"
+      tags: ['always']
+
+  roles:
+    # 'skip-ci' allows me to not test that role
+    # 'never' is a special tag that is on run when that tag is specified
+
+    # Desktop
+    - role: desktop
+      tags: ['desktop']
+      when: configure_desktop
+      become: true
+
+    # Dev tools
+    - role: dev
+      tags: ['dev-tools']
+
+    # Terminal
+    - role: zsh
+      when: configure_zsh
+      tags: ['terminal', 'zsh']
+      become: true
+
+    # Docker
+    - role: docker
+      when: configure_docker
+      tags: ['terminal', 'docker', 'skip-ci']
+      become: true
+
+    # Infra
+    - role: infra
+      tags: ['iac']
+      become: true
+
+    # Debug
+    - role: debug
+      tags: ['debug']
+
+  tasks:
+    - import_tasks: tasks/codium-extensions.yml
+      tags: ['codium-extensions']
+      when: configure_codium_extensions
+    - import_tasks: tasks/apt-uninstall.yml
+      tags: ['unused-packages']
+      when: configure_apt_uninstall
+    - import_tasks: tasks/extra-packages.yml
+      tags: ['extra-packages']
+    - import_tasks: tasks/flatpak.yml
+      tags: ['flatpak']
+      when: configure_flatpak
+    - import_tasks: tasks/airpods-pro-bluetooth-fix.yml
+      tags: ['bugfix', 'airpods-pro-bluetooth-fix']
+      when: configure_airpods_pro_bluetooth_fix
+    - import_tasks: tasks/wifi-powersave-mode.yml
+      tags: ['wifi-powersave-mode']
+      when: configure_wifi_powersave_mode
+    - import_tasks: tasks/ulauncher.yml
+      tags: ['ulauncher']
+      when: configure_ulauncher
+    - import_tasks: tasks/screen-flickering-fix.yml
+      tags: ['bugfix', 'xps13', 'screen-flickering-fix']
+      when: configure_screen_flickering_fix
+    - import_tasks: tasks/snap-uninstall.yml
+      tags: ['snap-uninstall']
+      when: configure_snap_uninstall
+    - import_tasks: tasks/notion.yml
+      tags: ['notion']
+      when: configure_notion

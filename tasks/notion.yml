@@ -1,0 +1,13 @@
+---
+- name: Notion - Get latest release of a public repository
+  community.general.github_release:
+    user: notion-enhancer
+    repo: notion-repackaged
+    action: latest_release
+  register: notion_latest
+
+- name: Notion - Install deb from github (Latest)
+  become: true
+  apt:
+    deb: >-
+      https://github.com/notion-enhancer/notion-repackaged/releases/download/{{notion_latest.tag}}/notion-app-enhanced-{{notion_latest.tag}}_amd64.deb

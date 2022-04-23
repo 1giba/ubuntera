@@ -1,0 +1,39 @@
+---
+- name: Git - Install
+  become: true
+  apt:
+    name: git
+    state: present
+
+- name: Git - Set autocrlf
+  community.general.git_config:
+    name: core.autocrlf
+    scope: global
+    value: false
+
+- name: Git - Set filemode
+  community.general.git_config:
+    name: core.filemode
+    scope: global
+    value: false
+
+- name: Git - Set user's name
+  community.general.git_config:
+    name: user.name
+    scope: global
+    value: "{{ git_user }} "
+  when: git_user
+
+- name: Git - Set user's email
+  community.general.git_config:
+    name: user.email
+    scope: global
+    value: "{{ git_email }}"
+  when: git_email
+
+#------------------------------------------
+# Clone repositories
+#
+- name: Git - clone
+  include_tasks: clone-repository.yml
+  when: configure_projects

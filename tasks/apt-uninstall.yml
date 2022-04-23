@@ -1,0 +1,19 @@
+---
+- name: Apt - Purge
+  become: true
+  apt:
+    name: "{{ items }}"
+    state: absent
+    purge: true
+    force: yes
+  loop: "{{ unused_packages }}"
+
+- name: Apt - Remove useless packages from the cache
+  become: true
+  apt:
+    autoclean: yes
+
+- name: Apt - Remove dependencies that are no longer required
+  become: true
+  apt:
+    autoremove: yes

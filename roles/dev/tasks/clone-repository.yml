@@ -1,0 +1,8 @@
+---
+- name: Repositories - Git clone
+  ansible.builtin.git:
+    repo: "{{ item.repo }}"
+    dest: "{{ item.dest }}"
+    accept_hostkey: yes
+  loop: "{{ projects }}"
+  

@@ -1,0 +1,21 @@
+---
+#------------------------------------------
+# Hyper.js
+#
+- name: Hyper.js setup
+  include_tasks: hyper.yml
+  when: configure_hyper
+
+#------------------------------------------
+# Git
+#
+- name: Git setup
+  include_tasks: git.yml
+
+#------------------------------------------
+# VSCodium
+#
+- name: VSCodium setup
+  include_tasks: codium.yml
+  when: configure_codium
+  

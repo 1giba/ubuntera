@@ -1,0 +1,5 @@
+---
+- name: Budgie - Install
+  apt:
+    name: ubuntu-budgie-desktop
+    state: present

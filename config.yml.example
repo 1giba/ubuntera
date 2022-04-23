@@ -1,0 +1,27 @@
+---
+configure_desktop: true
+selected_desktop: 'budgie'
+
+git_user: 1giba
+git_email: olamundo@gmail.com
+configure_projects: true
+projects:
+  - repo: git@github.com:1codehappy/laravel-api
+    dest: "~/code/lpi"
+  - repo: git@github.com:1codehappy/laravel-workspace
+    dest: "~/code/lws"
+  - repo: git@github.com:1giba/ubuntera
+    dest: "~/code/ubt"
+
+zsh_aliases:
+  - code=codium
+  - main='cd ~/code'
+  - lpi='cd ~/code/lpi'
+  - lws='cd ~/code/lws && ./lws.sh'
+  - ubt='cd ~/code/ubuntera'
+  - up='docker-compose up -d'
+  - down='docker-compose down'
+  - back='docker-compose exec backend bash'
+  - front='docker-compose exec frontend bash'
+
+configure_terraform: false

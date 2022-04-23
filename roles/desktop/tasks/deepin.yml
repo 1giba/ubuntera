@@ -1,0 +1,11 @@
+---
+- name: Deepin - Install PPA
+  ansible.builtin.apt_repository:
+    repo: ppa:ubuntudde-dev/stable
+    state: present
+
+- name: Deepin - Install desktop
+  apt:
+    name: ubuntudde-dde
+    update_cache: yes
+

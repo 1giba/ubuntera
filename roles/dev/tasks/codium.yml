@@ -1,0 +1,22 @@
+---
+- name: VSCodium - Add GPG key
+  become: true
+  ansible.builtin.apt_key:
+    url: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
+    state: present
+    keyring: /usr/share/keyrings/vscodium-archive-keyring.gpg
+
+- name: VSCodium - Add repository
+  become: true
+  ansible.builtin.apt_repository:
+    repo: deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs vscodium main
+    state: present
+    filename: vscodium
+
+- name: VSCodium - Install apt package
+  become: true
+  apt:
+    name: 'codium'
+    state: latest
+    update_cache: "yes"
+
