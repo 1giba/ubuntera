@@ -39,5 +39,6 @@ unused_packages:
   - gnome-screenshot
   - celluloid
   - nautilus
+  - rhythmbox
 
 configure_terraform: false
