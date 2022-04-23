@@ -11,27 +11,12 @@ My Ubuntu 22.04 development environment for laptops and desktops based on [iancl
 
 ## Configuration
 
-- Create a `config.yml`.
-- You will need to define the git user's name and email.
+- Create your own `config.yml`.
+- Or use the `config.yml.example` to override the variables.
 
-```yml
-git_user: "Your user's name"
-git_email: "Your user's email"
-```
-
-- You can clone your repositories:
-```yml
-configure_projects: true
-projects:
-  -
-```
-
-- You can override the variables of `default.config.yml`.
-
-**Example:**
-```yml
-configure_desktop: true
-selected_desktop: 'budgie'
+```bash
+cp default.config.yml config.yml # First option
+cp config.yml.example config.yml # Second option
 ```
 
 ## Installation
