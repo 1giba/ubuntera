@@ -2,7 +2,7 @@
 
 My Ubuntu 22.04 development environment for laptops and desktops based on [ianclearly/ubuntu-dev-playbook](https://github.com/ianclearly/ubuntu-dev-playbook).
 
-![My desktop]([/assets/img/MarineGEO_logo.png](https://raw.githubusercontent.com/1giba/ubuntera/master/desktop.png) "My desktop")
+![My desktop](https://raw.githubusercontent.com/1giba/ubuntera/master/desktop.png "My desktop")
 
 ## Requirements
 
