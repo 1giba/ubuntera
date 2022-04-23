@@ -2,7 +2,7 @@
 - name: Apt - Purge
   become: true
   apt:
-    name: "{{ items }}"
+    name: "{{ item }}"
     state: absent
     purge: true
     force: yes

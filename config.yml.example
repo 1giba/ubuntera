@@ -18,10 +18,26 @@ zsh_aliases:
   - main='cd ~/code'
   - lpi='cd ~/code/lpi'
   - lws='cd ~/code/lws && ./lws.sh'
-  - ubt='cd ~/code/ubuntera'
+  - ubt='cd ~/code/ubt'
   - up='docker-compose up -d'
   - down='docker-compose down'
   - back='docker-compose exec backend bash'
   - front='docker-compose exec frontend bash'
+
+configure_apt_uninstall: true
+unused_packages:
+  - "libreoffice*"
+  - tilix
+  - aisleriot 
+  - gnome-sudoku 
+  - cheese
+  - magnus
+  - gnome-2048
+  - gnome-mines
+  - gnome-mahjongg
+  - gnome-terminal
+  - gnome-screenshot
+  - celluloid
+  - nautilus
 
 configure_terraform: false

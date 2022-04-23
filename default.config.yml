@@ -57,6 +57,7 @@ codium_extensions:
 
 # docker --------------------------------------------------------------------------
 configure_docker: true
+docker_compose_version: v2.4.1
 
 # infra tools ---------------------------------------------------------------------
 configure_local_cluster: true # kind, kubectl, helm
@@ -118,12 +119,13 @@ flatpaks:
   - "com.uploadedlobster.peek"  # Simple screen recorder with an easy to use interface
   - "com.github.junrrein.PDFSlicer"
   - "com.spotify.Client"  # Music
+  - "com.slack.Slack" # Slack chat
   - "com.bitwarden.desktop"  # A secure and free password manager for all of your devices
   - "us.zoom.Zoom" # Video conference tool
   - "com.getpostman.Postman" # API development environment
   - "com.bitwarden.desktop" # Bitwarden desktop
   - "org.flameshot.Flameshot" # Print screen tool
-  - "org.firefox.Firefox" # if you uninstall snap, you can add firefox
+  - "org.mozilla.firefox" # if you uninstall snap, you can add firefox
 
 configure_apt_uninstall: false
 # unused_packages:
@@ -133,6 +135,7 @@ configure_apt_uninstall: false
 configure_ulauncher: true
 
 configure_notion: true # https://notion.so
+notion_version: v2.0.18-1 # https://github.com/notion-enhancer/notion-repackaged/releases
 
 configure_wifi_powersave_mode: true
 wifi_powersave_mode: '2'  # disable powersave

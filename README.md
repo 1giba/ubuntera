@@ -4,8 +4,6 @@ My Ubuntu 22.04 development environment for laptops and desktops based on [iancl
 
 ## Requirements
 
-- Install make:
-   - `sudo apt install make`
 - Generate your [SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
    - After that reconfigure your github/gitlab SSH settings.
 

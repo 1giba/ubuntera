@@ -4,6 +4,7 @@
   snap:
     name: snap-store
     state: absent
+  ignore_errors: yes
 
 - name: Snap - Unmount
   become: true
@@ -41,7 +42,7 @@
 - name: Snap - No snapd
   become: true
   copy:
-    path: /etc/apt/preferences.d/no_snapd
+    dest: /etc/apt/preferences.d/no_snapd
     content: |
       Package: snapd
       Pin: origin
