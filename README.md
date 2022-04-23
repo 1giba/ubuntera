@@ -2,6 +2,8 @@
 
 My Ubuntu 22.04 development environment for laptops and desktops based on [ianclearly/ubuntu-dev-playbook](https://github.com/ianclearly/ubuntu-dev-playbook).
 
+![My desktop]([/assets/img/MarineGEO_logo.png](https://raw.githubusercontent.com/1giba/ubuntera/master/desktop.png) "My desktop")
+
 ## Requirements
 
 - Generate your [SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
@@ -32,14 +34,28 @@ cp config.yml.example config.yml # Second option
 - [VSCodium](https://vscodium.com)
 - [ULauncher](https://github.com/ULauncher/ULauncher)
 - [Timeshift](https://github.com/teejee2008/timeshift)
-- [Flameshot](https://flameshot.js.org/#/),
 - [Peek](https://github.com/phw/peek), a simple screen recorder with an easy to use interface
 - [PDFSlicer](https://github.com/junrrein/pdfslicer)
 - Flatseal: Manage flatpak permissions
 - Bitwarden:  A secure and free fassword manager for all of your devices
 - `Spotify`,
-- Notion
-- `Stacer` <https://github.com/oguzhaninan/Stacer>,
+- `Chromium`
+- Flatseal: Manage Flatpak permissions
+- Peek:  Simple screen recorder with an easy to use interface
+- PDFSlicer
+- Slack chat
+- Zoom
+- Postman
+- Flameshot
+- Firefox
+- `Stacer` <https://github.com/oguzhaninan/Stacer>
+- Kind
+- Kubectl
+- Helm
+- Lens
+- axel
+- silversearcher
+- vim
 
 ---
 Hope you enjoy it.

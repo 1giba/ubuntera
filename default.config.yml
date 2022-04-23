@@ -134,9 +134,6 @@ configure_apt_uninstall: false
 # Miscelaneous ------------------------------------------------------
 configure_ulauncher: true
 
-configure_notion: true # https://notion.so
-notion_version: v2.0.18-1 # https://github.com/notion-enhancer/notion-repackaged/releases
-
 configure_wifi_powersave_mode: true
 wifi_powersave_mode: '2'  # disable powersave
 # https://twitter.com/dominucco/status/1410181146940411905?s=20
