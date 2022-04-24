@@ -124,7 +124,6 @@ flatpaks:
   - "us.zoom.Zoom" # Video conference tool
   - "com.getpostman.Postman" # API development environment
   - "com.bitwarden.desktop" # Bitwarden desktop
-  - "org.flameshot.Flameshot" # Print screen tool
   - "org.mozilla.firefox" # if you uninstall snap, you can add firefox
 
 configure_apt_uninstall: false
@@ -133,6 +132,8 @@ configure_apt_uninstall: false
 
 # Miscelaneous ------------------------------------------------------
 configure_ulauncher: true
+
+configure_flameshot: true
 
 configure_wifi_powersave_mode: true
 wifi_powersave_mode: '2'  # disable powersave

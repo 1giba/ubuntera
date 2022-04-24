@@ -142,6 +142,10 @@ extra-packages:
 extra-packages: ## Runs the extra-packages ansible role
 	@$(ANSIBLE) --tags="extra-packages"
 
+flameshot:
+flameshot: ## Runs the flameshot ansible role
+	@$(ANSIBLE) --tags="flameshot"
+
 flatpak:
 flatpak: ## Runs the flatpak ansible role
 	@$(ANSIBLE) --tags="flatpak"

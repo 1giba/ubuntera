@@ -1,0 +1,6 @@
+---
+
+- name: PWA for Firefox 
+  apt:
+    deb: >-
+      https://github.com/filips123/PWAsForFirefox/releases/#:~:text=firefoxpwa_{{ firefox_pwa_version }}_{{ host_arch }}.deb
