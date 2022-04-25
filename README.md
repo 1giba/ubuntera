@@ -4,26 +4,33 @@ My Ubuntu 22.04 development environment for laptops and desktops based on [iancl
 
 ![My desktop](https://raw.githubusercontent.com/1giba/ubuntera/master/desktop.png "My desktop")
 
-## Requirements
+## Installation
 
 - Generate your [SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
    - After that reconfigure your github/gitlab SSH settings.
+- Download repository:
+   - `wget -O ubuntera.zip  https://github.com/1giba/ubuntera/archive/refs/heads/master.zip && unzip ubuntera.zip`
+- Install make:
+   - `sudo apt install make`
 
 ## Configuration
 
 - Create your own `config.yml`.
-- Or use the `config.yml.example` to override the variables.
+- Or use the `my.config.yml` to override the variables.
 
 ```bash
 cp default.config.yml config.yml # First option
-cp config.yml.example config.yml # Second option
+cp my.config.yml config.yml # Second option
 ```
 
-## Installation
+## Main Commands
 
-- Download the zip file from repository.
-- Extract to your path.
-- Run `make all`.
+```bash
+make all # install requirements and packages
+make bootstrap-install # install requirements
+make bootstrap # check requirements
+make install # install packages
+```
 
 ## Features
 
@@ -56,6 +63,60 @@ cp config.yml.example config.yml # Second option
 - axel
 - silversearcher
 - vim
+- meld
+- web.whatsapp.com - PWA
+
+## Run specific tasks
+
+``` bash
+make bugfix  # Run tasks with bugfix tag
+make codium  # Run tasks with codium tag
+make codium-extension  # Run tasks with codium-extension tag
+make debug  # Run tasks with debug tag
+make desktop  # Run tasks with desktop tag
+make dev  # Run tasks with dev tag
+make docker  # Run tasks with docker tag
+make extra-packages  # Run tasks with extra-packages tag
+make firefox-pwa  # Run tasks with firefox-pwa tag
+make flameshot  # Run tasks with flameshot tag
+make flatpak  # Run tasks with flatpak tag
+make git  # Run tasks with git tag
+make helm  # Run tasks with helm tag
+make hyper  # Run tasks with hyper tag
+make infra  # Run tasks with infra tag
+make kind  # Run tasks with kind tag
+make lens  # Run tasks with lens tag
+make snap-uninstall  # Run tasks with snap-uninstall tag
+make stacer  # Run tasks with stacer tag
+make terraform  # Run tasks with terraform tag
+make terminal  # Run tasks with terminal tag
+make timeshift  # Run tasks with timeshift tag
+make ulauncher  # Run tasks with ulauncher tag
+make unused-packages  # Run tasks with unused-packages tag
+make vscodium  # Run tasks with vscodium tag
+make wifi-powersave-mode  # Run tasks with wifi-powersave-mode tag
+make zsh  # Run tasks with zsh tag
+```
+
+## Default ZSH Aliases
+
+Examples:
+
+```bash
+rez # reload ~/.zshrc file
+code ~/.zshrc # alias to vscodium
+lt  # sort by file size
+mnt # view mounted drives
+gh apt-repository # search bash history
+left  # most recently edited files
+count # count files
+cpv /tmp/src /tmp/dest # copy with progress bar
+del /tmp/error.log # move files to trash
+cg # go to git main level
+drm # remove all stopped containers
+drmi # remove all untagged images
+dc run -it --rm php:8.0-cli-alpine sh # alias to docker-compose
+```
 
 ---
 Hope you enjoy it.

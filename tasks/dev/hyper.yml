@@ -11,3 +11,7 @@
   apt:
     deb: >-
       https://github.com/vercel/hyper/releases/download/{{ hyper_latest.tag }}/hyper_{{ hyper_latest.tag|replace('v', '') }}_amd64.deb
+
+- name: Hyper - Install plugins
+  shell: hyper i {{ item }}
+  loop: "{{ hyper_plugins }}"

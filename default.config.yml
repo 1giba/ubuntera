@@ -11,6 +11,11 @@ configure_desktop: false
 
 # dev tools ---------------------------------------------------------------------
 configure_hyper: true # https://hyper.is
+hyper_plugins:
+  - hypercwd
+  - hyper-search
+  - hyper-pane
+  - hyper-material-theme
 
 # you need to declare the git_user and git_email to handle with git
 # create a config.yml file to define it.
@@ -25,8 +30,14 @@ configure_projects: false
 #   - repo: git@github.com:1giba/env
 #     dest: "~/code/env"
 
-
 configure_codium: true # https://vscodium.com
+codium_preferences: |
+  {
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Material Theme Palenight",
+    "files.trimTrailingWhitespace": true
+  }
+
 configure_codium_extensions: true
 codium_extensions:
   ## Ansible, Docker-Compose, etc.
@@ -49,11 +60,15 @@ codium_extensions:
   - esbenp.prettier-vscode
 
   ## Markdown
-  - yzhang.markdown-all-in-one
+  - shd101wyy.markdown-preview-enhanced
 
   ## Infrastructure
   - ms-azuretools.vscode-docker
   - hashicorp.terraform
+
+  ## Themes
+  - Equinusocio.vsc-material-theme
+  - PKief.material-icon-theme
 
 # docker --------------------------------------------------------------------------
 configure_docker: true
@@ -77,11 +92,20 @@ zsh_aliases:
   # https://opensource.com/article/19/7/bash-aliases
   # - ls='ls -F'
   # - ll='ls -lh'
-  - mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | egrep ^/dev/ | sort"
-  - hg='history|grep'  # search bash history
-  - left='ls -t -1'  # most recently edited files
+  - rez='source $HOME/.zshrc' # reload ~/.zshrc file
+  - code='codium ' # alias to vscodium
+  - lt='du -sh * | sort -h' # sort by file size
+  - mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | egrep ^/dev/ | sort" # view mounted drives
+  - gh='history|grep' # search bash history
+  - left='ls -t -1' # most recently edited files
+  - count='find . -type f | wc -l' # count files
+  - cpv='rsync -ah --info=progress2' # copy with progress bar
+  - del='mv --force -t ~/.local/share/Trash ' # move files to trash
   - cg='cd `git rev-parse --show-toplevel`'  # go to git main level
-  - full-upgrade='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y'
+  - drm='docker rm $(docker ps -a -q)' # remove all stopped containers
+  - drmi='docker images -q --filter "dangling=true" | xargs docker rmi' # remove all untagged images
+  - dc='docker-compose ' # alias to docker-compose
+
 ohmyzsh_bundles:
   # Bundles from the default repo (robbyrussell's oh-my-zsh) only need a name
   # https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
@@ -128,12 +152,21 @@ flatpaks:
 
 configure_apt_uninstall: false
 # unused_packages:
-#   - "libreoffice*"
+#   - name: "foo"
+#     repo: ppa:foo
 
 # Miscelaneous ------------------------------------------------------
 configure_ulauncher: true
 
 configure_flameshot: true
+
+configure_firefoxpwa: false
+# https://github.com/filips123/PWAsForFirefox/tags
+firefoxpwa_version: v1.4.0
+pwa_manifests:
+  - https://web.whatsapp.com/binary-transparency-manifest-2.2214.9.json # WhatsApp
+# to change the icon
+pwa_whatsapp_manifest_url: https://web.whatsapp.com/binary-transparency-manifest-2.2214.9.json
 
 configure_wifi_powersave_mode: true
 wifi_powersave_mode: '2'  # disable powersave
@@ -153,7 +186,8 @@ apt_packages:
   # Main
   - name: axel # https://github.com/axel-download-accelerator/axel
   - name: silversearcher-ag # https://github.com/ggreer/the_silver_searcher
-  - name: vim
+  - name: vim # editor
+  - name: meld #  diff
   # Audio Control
   - name: pulseaudio
   - name: pavucontrol

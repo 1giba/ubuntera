@@ -36,19 +36,6 @@ ANSIBLE_PLAYBOOK = ansible-playbook $(PLAYBOOK) -v -e $(VARIABLES)
 
 ANSIBLE = $(ANSIBLE_PLAYBOOK) --ask-become-pass
 
-# GitHub Actions Ansible Playbook Command (doesn't prompt for password)
-RUNNER = runner
-ifeq "$(HOSTNAME)" "$(RUNNER)"
-	ANSIBLE = $(ANSIBLE_PLAYBOOK) --skip-tags "fonts"
-endif
-
-ifeq "$(shell whoami)" "$(RUNNER)"
-	ANSIBLE = $(ANSIBLE_PLAYBOOK) --skip-tags "fonts"
-endif
-
-# Custome GNOME keybindings
-CUSTOM_KEYBINDING_BASE = /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
-
 # - to suppress if it doesn't exist
 -include make.env
 
@@ -88,20 +75,9 @@ check: DARGS?=
 check: ## Checks personal-computer.yml playbook
 	@$(ANSIBLE) --check
 
-terminal-github-runner:
-terminal-github-runner:
-	# test coverage is in the ansible roles themselves
-	@$(ANSIBLE) --tags="terminal" --skip-tags="skip-ci"
-
-desktop-github-runner:
-desktop-github-runner:
-	# test coverage is in the ansible roles themselves
-	@$(ANSIBLE) --tags="desktop" --skip-tags="skip-ci,terminal"
-
 install: DARGS?=
 install: ## Installs everything via personal-computer.yml playbook
-	@$(ANSIBLE) --skip-tags="nautilus-mounts"
-	# no planned test coverage to nautilus-mounts as it deals with file mounts
+	@$(ANSIBLE)
 
 all: ## Does most eveything with Ansible and Make targets
 all: bootstrap bootstrap-check install
@@ -110,17 +86,21 @@ all: bootstrap bootstrap-check install
 # Run ./makefile_targets_from_ansible_tags.py, copy Makefile.template below
 ###########################################################################
 
-airpods-pro-bluetooth-fix:
-airpods-pro-bluetooth-fix: ## Runs the airpods-pro-bluetooth-fix ansible role
-	@$(ANSIBLE) --tags="airpods-pro-bluetooth-fix"
-
 bugfix:
 bugfix: ## Runs the bugfix ansible role
 	@$(ANSIBLE) --tags="bugfix"
 
+codium:
+codium: ## Runs the codium ansible role
+	@$(ANSIBLE) --tags="codium"
+
 codium-extensions:
-codium-extensions: ## Runs the code-extensions ansible role
+codium-extensions: ## Runs the codium-extensions ansible role
 	@$(ANSIBLE) --tags="codium-extensions"
+
+codium-preferences:
+codium-preferences: ## Runs the codium-preferences ansible role
+	@$(ANSIBLE) --tags="codium-preferences"
 
 debug:
 debug: ## Runs the debug ansible role
@@ -142,6 +122,10 @@ extra-packages:
 extra-packages: ## Runs the extra-packages ansible role
 	@$(ANSIBLE) --tags="extra-packages"
 
+firefox-pwa:
+firefox-pwa: ## Runs the firefox-pwa ansible role
+	@$(ANSIBLE) --tags="firefox-pwa"
+
 flameshot:
 flameshot: ## Runs the flameshot ansible role
 	@$(ANSIBLE) --tags="flameshot"
@@ -150,21 +134,49 @@ flatpak:
 flatpak: ## Runs the flatpak ansible role
 	@$(ANSIBLE) --tags="flatpak"
 
+git:
+git: ## Runs the git ansible role
+	@$(ANSIBLE) --tags="git"
+
+helm:
+helm: ## Runs the helm ansible role
+	@$(ANSIBLE) --tags="helm"
+
+hyper:
+hyper: ## Runs the hyper ansible role
+	@$(ANSIBLE) --tags="hyper"
+
 infra:
 infra: ## Runs the infra ansible role
 	@$(ANSIBLE) --tags="iac"
 
-screen-flickering-fix:
-screen-flickering-fix: ## Runs the screen-flickering-fix ansible role
-	@$(ANSIBLE) --tags="screen-flickering-fix"
+kind:
+kind: ## Runs the kind ansible role
+	@$(ANSIBLE) --tags="kind"
+
+lens:
+lens: ## Runs the lens ansible role
+	@$(ANSIBLE) --tags="lens"
 
 snap-uninstall:
 snap-uninstall: ## Runs the snap-uninstall ansible role
 	@$(ANSIBLE) --tags="snap-uninstall"
 
+stacer:
+stacer: ## Runs the stacer ansible role
+	@$(ANSIBLE) --tags="stacer"
+
+terraform:
+terraform: ## Runs the terraform ansible role
+	@$(ANSIBLE) --tags="terraform"
+
 terminal:
 terminal: ## Runs the terminal ansible role
 	@$(ANSIBLE) --tags="terminal"
+
+timeshift:
+timeshift: ## Runs the timeshift ansible role
+	@$(ANSIBLE) --tags="timeshift"
 
 ulauncher:
 ulauncher: ## Runs the ulauncher ansible role
@@ -173,6 +185,10 @@ ulauncher: ## Runs the ulauncher ansible role
 unused-packages:
 unused-packages: ## Runs the unused-packages ansible role
 	@$(ANSIBLE) --tags="unused-packages"
+
+vscodium:
+vscodium: ## Runs the vscodium ansible role
+	@$(ANSIBLE) --tags="vscodium"
 
 wifi-powersave-mode:
 wifi-powersave-mode: ## Runs the wifi-powersave-mode ansible role

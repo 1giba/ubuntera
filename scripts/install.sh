@@ -13,8 +13,7 @@ python3 -m pip install --user testresources wheel
 python3 -m pip install --user -r requirements_ansible.txt
 python3 -m pip install github3.py
 
-sudo apt install software-properties-common -y
 sudo add-apt-repository --yes --update ppa:ansible/ansible
-sudo apt update
-sudo apt install ansible -y
+sudo apt update -y
+sudo apt install software-properties-common ansible -y
 

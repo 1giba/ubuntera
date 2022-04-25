@@ -13,17 +13,6 @@
   roles:
     # 'skip-ci' allows me to not test that role
     # 'never' is a special tag that is on run when that tag is specified
-
-    # Desktop
-    - role: desktop
-      tags: ['desktop']
-      when: configure_desktop
-      become: true
-
-    # Dev tools
-    - role: dev
-      tags: ['dev-tools']
-
     # Terminal
     - role: zsh
       when: configure_zsh
@@ -36,19 +25,51 @@
       tags: ['terminal', 'docker', 'skip-ci']
       become: true
 
-    # Infra
-    - role: infra
-      tags: ['iac']
-      become: true
-
     # Debug
     - role: debug
       tags: ['debug']
 
   tasks:
-    - import_tasks: tasks/codium-extensions.yml
-      tags: ['codium-extensions']
+    # Desktop
+    - import_tasks: tasks/desktop/main.yml
+      tags: ['desktop']
+      when: configure_desktop
+    # Dev tools
+    - import_tasks: tasks/dev/codium.yml
+      tags: ['dev', 'codium']
+    - import_tasks: tasks/dev/codium-extensions.yml
+      tags: ['dev', 'codium', 'codium-extensions']
       when: configure_codium_extensions
+    - import_tasks: tasks/dev/codium-preferences.yml
+      tags: ['dev', 'codium', 'codium-preferences']
+      when: configure_codium_extensions
+    - import_tasks: tasks/dev/git.yml
+      tags: ['dev', 'git']
+    - import_tasks: tasks/dev/hyper.yml
+      tags: ['dev', 'hyper']
+    # Infra tools
+    - import_tasks: tasks/infra/kind.yml
+      tags: ['infra', 'kind']
+      when: configure_local_cluster
+    - import_tasks: tasks/infra/kubectl.yml
+      tags: ['infra', 'kubectl']
+      when: configure_local_cluster
+    - import_tasks: tasks/infra/helm.yml
+      tags: ['infra', 'helm']
+      when: configure_local_cluster
+    - import_tasks: tasks/infra/lens.yml
+      tags: ['infra', 'lens']
+      when: configure_lens
+    - import_tasks: tasks/infra/stacer.yml
+      tags: ['infra', 'stacer']
+      when: configure_stacer
+    - import_tasks: tasks/infra/terraform.yml
+      tags: ['infra', 'terraform']
+      when: configure_terraform
+    - import_tasks: tasks/infra/timeshift.yml
+      tags: ['infra', 'timeshift']
+      when: configure_timeshift
+    # Misc
     - import_tasks: tasks/apt-uninstall.yml
       tags: ['unused-packages']
       when: configure_apt_uninstall
@@ -63,15 +84,12 @@
     - import_tasks: tasks/flameshot.yml
       tags: ['flameshot']
       when: configure_flameshot
-    - import_tasks: tasks/airpods-pro-bluetooth-fix.yml
-      tags: ['bugfix', 'airpods-pro-bluetooth-fix']
-      when: configure_airpods_pro_bluetooth_fix
+    - import_tasks: tasks/firefox-pwa.yml
+      tags: ['firefox-pwa']
+      when: configure_firefoxpwa
     - import_tasks: tasks/wifi-powersave-mode.yml
       tags: ['wifi-powersave-mode']
       when: configure_wifi_powersave_mode
-    - import_tasks: tasks/screen-flickering-fix.yml
-      tags: ['bugfix', 'xps13', 'screen-flickering-fix']
-      when: configure_screen_flickering_fix
     - import_tasks: tasks/snap-uninstall.yml
       tags: ['snap-uninstall']
       when: configure_snap_uninstall
