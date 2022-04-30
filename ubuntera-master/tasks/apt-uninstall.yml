@@ -1,0 +1,27 @@
+---
+- name: Apt - Remove repository
+  become: true
+  apt_repository:
+    name: "{{ item.repo }}"
+    state: absent
+  when: item.repo is defined
+  loop: "{{ unused_packages }}"
+
+- name: Apt - Purge
+  become: true
+  apt:
+    name: "{{ item.name }}"
+    state: absent
+    purge: true
+    force: yes
+  loop: "{{ unused_packages }}"
+
+- name: Apt - Remove useless packages from the cache
+  become: true
+  apt:
+    autoclean: yes
+
+- name: Apt - Remove dependencies that are no longer required
+  become: true
+  apt:
+    autoremove: yes

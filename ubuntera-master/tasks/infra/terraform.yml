@@ -1,0 +1,16 @@
+---
+- name: Terraform - Install GPG key
+  ansible.builtin.apt_key:
+    url: https://apt.releases.hashicorp.com/gpg
+    state: present
+
+- name: Terraform - Install PPA
+  ansible.builtin.apt_repository:
+    repo: "deb [arch={{ host_arch }}] https://apt.releases.hashicorp.com focal main"
+    state: present
+
+- name: Terraform - Install apt package
+  apt:
+    name: "terraform"
+    state: present
+    update_cache: "yes"

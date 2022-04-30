@@ -1,0 +1,21 @@
+---
+#------------------------------------------
+# Budgie
+#
+- name: Budgie - Installation
+  include_tasks: budgie.yml
+  when: selected_desktop == 'budgie'
+
+#------------------------------------------
+# Deepin (not working yet)
+#
+# - name: Deepin - Installation
+#   include_tasks: deepin.yml
+#   when: selected_desktop == 'deepin'
+
+#------------------------------------------
+# Kylin
+#
+- name: Kylin - Installation
+  include_tasks: kylin.yml
+  when: selected_desktop == 'kylin'

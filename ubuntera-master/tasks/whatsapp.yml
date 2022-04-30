@@ -1,0 +1,23 @@
+---
+- name: PWA for Firefox - Get all registered sites
+  ansible.builtin.shell: firefoxpwa profile list
+  register: firefoxpwa_profile_list
+
+- name: PWA for Firefox - Get WhatsApp line
+  shell: "echo '{{ firefoxpwa_profile_list.stdout }}' | grep {{ pwa_whatsapp_manifest_url }}"
+  register: firefoxpwa_whatsapp_line
+  when: pwa_whatsapp_manifest_url is defined
+
+- name: PWA for Firefox - Get WhatsApp site ID
+  set_fact:
+    firefoxpwa_whatsapp_id: "{{ firefoxpwa_whatsapp_line.stdout|regex_search(regexp)|replace('(', '')|replace(')', '') }}"
+  vars:
+    regexp: '\([A-Z0-9]{26}\)'
+  when: firefoxpwa_whatsapp_line.stdout != ''
+
+- name: Change whatsapp icon
+  copy:
+    src: ./assets/icons/Whatsapp-icon.png
+    dest: "~/.local/share/icons/hicolor/48x48/apps/FFPWA-{{ firefoxpwa_whatsapp_id }}.png"
+    force: yes
+  when: pwa_whatsapp_manifest_url is defined and firefoxpwa_whatsapp_id

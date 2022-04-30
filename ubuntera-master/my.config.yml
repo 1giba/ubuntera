@@ -1,0 +1,74 @@
+---
+configure_desktop: true
+selected_desktop: 'budgie'
+
+# XPS 13
+# codium_preferences: |
+#   {
+#     "workbench.iconTheme": "material-icon-theme",
+#     "workbench.colorTheme": "Community Material Theme Lighter High Contrast",
+#     "files.trimTrailingWhitespace": true,
+#     "editor.fontSize": 17,
+#     "window.zoomLevel": 0.8,
+#     "workbench.colorCustomizations": {
+#       "[Community Material Theme Lighter High Contrast]": {
+#         "editor.background": "#fbfbc8",
+#       }
+#     }
+#   }
+
+git_user: 1giba
+git_email: olamundo@gmail.com
+configure_projects: true
+projects:
+  - repo: git@github.com:1codehappy/laravel-api
+    dest: "~/code/lpi"
+  - repo: git@github.com:1codehappy/laravel-workspace
+    dest: "~/code/lws"
+  - repo: git@gitlab.com:hire365/env
+    dest: "~/code/h365"
+
+zsh_theme: gentoo
+zsh_aliases:
+  - rez='source ~/.zshrc' # reload ~/.zshrc file
+  - code='codium ' # alias to vscodium
+  - lt='du -sh * | sort -h' # sort by file size
+  - mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | egrep ^/dev/ | sort" # view mounted drives
+  - gh='history|grep' # search bash history
+  - left='ls -t -1' # most recently edited files
+  - count='find . -type f | wc -l' # count files
+  - cpv='rsync -ah --info=progress2' # copy with progress bar
+  - del='mv --force -t ~/.local/share/Trash ' # move files to trash
+  - cg='cd `git rev-parse --show-toplevel`'  # go to git main level
+  - drm='docker rm $(docker ps -a -q)' # remove all stopped containers
+  - drmi='docker images -q --filter "dangling=true" | xargs docker rmi' # remove all untagged images
+  - dc='docker-compose ' # alias to docker-compose
+  - main='cd ~/code'
+  - lpi='cd ~/code/lpi'
+  - lws='~/code/lws/lws.sh'
+  - ubt='cd ~/code/ubt'
+  - up='dc up -d'
+  - down='dc down'
+  - back='dc exec backend bash'
+  - front='dc exec frontend bash'
+
+configure_apt_uninstall: true
+unused_packages:
+  - name: "libreoffice*"
+  - name: tilix
+  - name: aisleriot
+  - name: gnome-sudoku
+  - name: cheese
+  - name: magnus
+  - name: gnome-2048
+  - name: gnome-mines
+  - name: gnome-mahjongg
+  - name: gnome-terminal
+  - name: gnome-screenshot
+  - name: celluloid
+  - name: nautilus
+  - name: rhythmbox
+
+configure_terraform: false
+
+configure_firefoxpwa: true

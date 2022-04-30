@@ -1,0 +1,43 @@
+---
+- name: PWA for Firefox - Check current version
+  ansible.builtin.command: firefoxpwa --version
+  register: firefoxpwa_current_version
+  changed_when: false
+  failed_when: false
+
+- name: PWA for Firefox - Get current version
+  set_fact:
+    firefoxpwa_current_version_value: "{{ firefoxpwa_current_version.stdout|replace('firefoxpwa ', '') }}"
+  when: firefoxpwa_current_version.stdout != ''
+
+- name: PWA for Firefox - Install package
+  become: true
+  apt:
+    deb: >-
+      https://github.com/filips123/PWAsForFirefox/releases/download/{{ firefoxpwa_version }}/firefoxpwa_{{ firefoxpwa_version|replace('v', '') }}_{{ host_arch }}.deb
+  when: >
+    firefoxpwa_current_version.stdout == ''
+    or firefoxpwa_version|replace('v', '') != firefoxpwa_current_version_value
+
+- name: PWA for Firefox - Download and install Firefox browser runtime
+  ansible.builtin.shell: firefoxpwa runtime install
+
+- name: PWA for Firefox - Get all registered sites
+  ansible.builtin.shell: firefoxpwa profile list
+  register: firefoxpwa_profile_list
+
+- name: PWA for Firefox - Check if the site is already installed
+  set_fact:
+    firefoxpwa_site: "{{ item }}"
+  loop: "{{ pwa_manifests }}"
+  when: item not in firefoxpwa_profile_list.stdout
+  register: firefoxpwa_sites
+
+- name: PWA for Firefox - Install site
+  ansible.builtin.shell: firefoxpwa site install {{ firefoxpwa_site }} --profile 00000000000000000000000000
+  when : firefoxpwa_site is defined
+  loop: "{{ firefoxpwa_sites.results }}"
+
+- name: PWA for Firefox - Change Whatsapp PWA icon
+  include_tasks: whatsapp.yml
+  when : pwa_whatsapp_manifest_url != ''
