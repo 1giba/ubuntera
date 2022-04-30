@@ -11,7 +11,7 @@ My Ubuntu 22.04 development environment for laptops and desktops based on [iancl
 - Execute the script:
 
 ```sh
- wget -O - https://raw.githubusercontent.com/1giba/ubuntera/master/install.sh | bash -
+ wget -O - https://raw.githubusercontent.com/1giba/ubuntera/master/install.sh | sh -
 ```
 
 ## Configuration
