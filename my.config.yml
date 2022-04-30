@@ -71,4 +71,5 @@ unused_packages:
 
 configure_terraform: false
 
+# Experimental
 configure_firefoxpwa: true

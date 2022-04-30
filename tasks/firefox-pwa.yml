@@ -1,23 +1,32 @@
 ---
-- name: PWA for Firefox - Check current version
-  ansible.builtin.command: firefoxpwa --version
-  register: firefoxpwa_current_version
-  changed_when: false
-  failed_when: false
+- name: PWA for Firefox - Install dependencies
+  become: true
+  apt:
+    name:
+      - curl
+      - gnupg
+      - apt-transport-https
+    state: present
 
-- name: PWA for Firefox - Get current version
-  set_fact:
-    firefoxpwa_current_version_value: "{{ firefoxpwa_current_version.stdout|replace('firefoxpwa ', '') }}"
-  when: firefoxpwa_current_version.stdout != ''
+- name: PWA for Firefox - Add GPG key
+  become: true
+  ansible.builtin.apt_key:
+    url: https://packagecloud.io/filips/FirefoxPWA/gpgkey
+    state: present
+    keyring: /usr/share/keyrings/firefoxpwa-keyring.gpg
+
+- name: PWA for Firefox - Add repository
+  become: true
+  ansible.builtin.apt_repository:
+    repo: deb [signed-by=/usr/share/keyrings/firefoxpwa-keyring.gpg] https://packagecloud.io/filips/FirefoxPWA/any any main
+    state: present
+    filename: firefoxpwa
 
 - name: PWA for Firefox - Install package
   become: true
   apt:
-    deb: >-
-      https://github.com/filips123/PWAsForFirefox/releases/download/{{ firefoxpwa_version }}/firefoxpwa_{{ firefoxpwa_version|replace('v', '') }}_{{ host_arch }}.deb
-  when: >
-    firefoxpwa_current_version.stdout == ''
-    or firefoxpwa_version|replace('v', '') != firefoxpwa_current_version_value
+    name: firefoxpwa
+    state: present
 
 - name: PWA for Firefox - Download and install Firefox browser runtime
   ansible.builtin.shell: firefoxpwa runtime install
