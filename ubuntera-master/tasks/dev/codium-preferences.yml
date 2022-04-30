@@ -1,5 +1,0 @@
----
-- name: VSCodium - User preferences
-  copy:
-    dest: ~/.config/VSCodium/User/settings.json
-    content: "{{ codium_preferences }}"
