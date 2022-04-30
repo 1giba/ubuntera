@@ -161,6 +161,8 @@ configure_ulauncher: true
 
 configure_flameshot: true
 
+configure_notion: true
+
 configure_firefoxpwa: false
 # https://github.com/filips123/PWAsForFirefox/tags
 firefoxpwa_version: v1.4.0
@@ -194,7 +196,3 @@ apt_packages:
   - name: pavucontrol
 
 configure_airpods_pro_bluetooth_fix: false
-
-# I have a XPS 13, so I needed to add the bug fix.
-# https://www.dell.com/community/Linux-General/XPS-13-7390-Ubuntu-Screen-flickering/td-p/7430121
-configure_screen_flickering_fix: false

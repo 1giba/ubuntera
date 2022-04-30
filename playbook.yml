@@ -93,3 +93,6 @@
     - import_tasks: tasks/snap-uninstall.yml
       tags: ['snap-uninstall']
       when: configure_snap_uninstall
+    - import_tasks: tasks/notion.yml
+      tags: ['notion']
+      when: configure_notion

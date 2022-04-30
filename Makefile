@@ -158,6 +158,10 @@ lens:
 lens: ## Runs the lens ansible role
 	@$(ANSIBLE) --tags="lens"
 
+notion:
+notion: ## Runs the notion ansible role
+	@$(ANSIBLE) --tags="notion"
+
 snap-uninstall:
 snap-uninstall: ## Runs the snap-uninstall ansible role
 	@$(ANSIBLE) --tags="snap-uninstall"

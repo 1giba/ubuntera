@@ -70,6 +70,7 @@ make install # install packages
 - vim
 - meld
 - WhatsApp (Experimental)
+- Notion (New)
 ```
 
 ## Run specific tasks
@@ -92,6 +93,7 @@ make hyper  # Run tasks with hyper tag
 make infra  # Run tasks with infra tag
 make kind  # Run tasks with kind tag
 make lens  # Run tasks with lens tag
+make notion   # Run tasks with notion tag
 make snap-uninstall  # Run tasks with snap-uninstall tag
 make stacer  # Run tasks with stacer tag
 make terraform  # Run tasks with terraform tag

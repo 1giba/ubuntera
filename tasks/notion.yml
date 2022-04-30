@@ -1,0 +1,13 @@
+---
+- name: Notion - Add repository
+  become: true
+  ansible.builtin.apt_repository:
+    repo: deb [trusted=yes] https://apt.fury.io/notion-repackaged/ /
+    state: present
+    filename: notion-repackaged
+
+- name: Notion - Install package
+  become: true
+  apt:
+    name: notion-app-enhanced
+    state: present
