@@ -125,4 +125,4 @@ dc run -it --rm php:8.0-cli-alpine sh # alias to docker-compose
 
 ---
 
-**Hope you enjoy it**. _You could star my repository_ if helps you in anyway. This would be **awesome**!! I'll really appreciate it! :heart:
+**Hope you enjoy it**. _You could_ :star: _my repository_ if helps you in anyway. This would be **awesome**!! I'll really appreciate it! :heart:
