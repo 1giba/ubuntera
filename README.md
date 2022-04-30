@@ -8,10 +8,11 @@ My Ubuntu 22.04 development environment for laptops and desktops based on [iancl
 
 - Generate your [SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
    - After that reconfigure your github/gitlab SSH settings.
-- Download repository:
-   - `wget -O ubuntera.zip  https://github.com/1giba/ubuntera/archive/refs/heads/master.zip && unzip ubuntera.zip`
-- Install make:
-   - `sudo apt install make`
+- Execute the script:
+
+```sh
+ wget -O - https://raw.githubusercontent.com/1giba/ubuntera/master/install.sh | bash -
+```
 
 ## Configuration
 

@@ -4,7 +4,6 @@ wget -O ${HOME}/ubuntera.zip https://github.com/1giba/ubuntera/archive/refs/head
 cd ${HOME}
 unzip ubuntera.zip
 mv ubuntera-master ubuntera
-cd ubuntera
 
 sudo apt -y clean
 sudo apt -y autoremove
@@ -12,7 +11,9 @@ sudo apt update
 sudo apt -y install make
 
 echo ""
-echo "Create your config.yml according to readme:"
+echo "\e[1;31mCreate your config.yml according to readme: \e[0m"
 echo "- https://github.com/1giba/ubuntera/blob/master/README.md#configuration"
 echo ""
-echo "!! NOW YOU CAN PLAY !!"
+echo "Installed path: \e[1;35m${HOME}/ubuntera"
+echo ""
+echo "\e[1;32m !! NOW YOU CAN PLAY !! \e[0m"
