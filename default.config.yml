@@ -11,11 +11,12 @@ configure_desktop: false
 
 # dev tools ---------------------------------------------------------------------
 configure_hyper: true # https://hyper.is
+# based on https://github.com/bnb/awesome-hyper
 hyper_plugins:
   - hypercwd
   - hyper-search
   - hyper-pane
-  - hyper-material-theme
+  - hyper-snazzy
 
 # you need to declare the git_user and git_email to handle with git
 # create a config.yml file to define it.

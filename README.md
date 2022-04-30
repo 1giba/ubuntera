@@ -2,7 +2,13 @@
 
 My Ubuntu 22.04 development environment for laptops and desktops based on [ianclearly/ubuntu-dev-playbook](https://github.com/ianclearly/ubuntu-dev-playbook).
 
-![My desktop](https://raw.githubusercontent.com/1giba/ubuntera/master/desktop.png "My desktop")
+![My desktop](https://raw.githubusercontent.com/1giba/ubuntera/master/assets/imgs/desktop.png "My desktop")
+
+```yml
+# The playbook will uninstall the snapd.
+# Create the config.yml file to avoid uninstalling
+configure_snap_uninstall: false
+```
 
 ## Installation
 
@@ -64,7 +70,7 @@ make install # install packages
 - silversearcher
 - vim
 - meld
-- web.whatsapp.com - PWA
+- WhatsApp (Experimental)
 
 ## Run specific tasks
 

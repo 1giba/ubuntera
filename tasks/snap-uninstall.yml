@@ -45,6 +45,5 @@
     dest: /etc/apt/preferences.d/no_snapd
     content: |
       Package: snapd
-      Pin: origin
-      Pin-Priority: -1
-      
+      Pin: release a=*
+      Pin-Priority: -10

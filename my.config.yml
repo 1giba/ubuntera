@@ -2,10 +2,19 @@
 configure_desktop: true
 selected_desktop: 'budgie'
 
+# XPS 13
 # codium_preferences: |
 #   {
-#     files.trimTrailingWhitespace: true,
-#     editor.fontSize: 18 # XPS13
+#     "workbench.iconTheme": "material-icon-theme",
+#     "workbench.colorTheme": "Community Material Theme Lighter High Contrast",
+#     "files.trimTrailingWhitespace": true,
+#     "editor.fontSize": 17,
+#     "window.zoomLevel": 0.8,
+#     "workbench.colorCustomizations": {
+#       "[Community Material Theme Lighter High Contrast]": {
+#         "editor.background": "#fbfbc8",
+#       }
+#     }
 #   }
 
 git_user: 1giba
