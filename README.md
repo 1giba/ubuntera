@@ -4,12 +4,6 @@ My Ubuntu 22.04 development environment for laptops and desktops based on [iancl
 
 ![My desktop](https://raw.githubusercontent.com/1giba/ubuntera/master/assets/imgs/desktop.png "My desktop")
 
-```yml
-# The playbook will uninstall the snapd.
-# Create the config.yml file to avoid uninstalling
-configure_snap_uninstall: false
-```
-
 ## Installation
 
 - Generate your [SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
@@ -21,12 +15,15 @@ configure_snap_uninstall: false
 
 ## Configuration
 
-- Create your own `config.yml`.
-- Or use the `my.config.yml` to override the variables.
-
 ```bash
-cp default.config.yml config.yml # First option
-cp my.config.yml config.yml # Second option
+cp default.config.yml config.yml # You need to create your own `config.yml`.
+cp my.config.yml config.yml # Or use `my.config.yml`, my own setup to see what changes I did.
+```
+
+```yml
+# The default playbook will uninstall the snapd.
+# Add the line bellow in the config.yml file to avoid uninstalling.
+configure_snap_uninstall: false
 ```
 
 ## Main Commands
@@ -40,6 +37,7 @@ make install # install packages
 
 ## Features
 
+```yml
 - zsh/oh-my-zsh
 - docker/docker-composer
 - git
@@ -71,6 +69,7 @@ make install # install packages
 - vim
 - meld
 - WhatsApp (Experimental)
+```
 
 ## Run specific tasks
 
@@ -125,4 +124,5 @@ dc run -it --rm php:8.0-cli-alpine sh # alias to docker-compose
 ```
 
 ---
-Hope you enjoy it.
+
+**Hope you enjoy it**. _You could star my repository_ if helps you in anyway. This would be **awesome**!! I'll really appreciate it! :heart:
