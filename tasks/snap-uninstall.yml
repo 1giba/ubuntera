@@ -18,7 +18,8 @@
     name: snapd
     state: absent
     purge: true
-    force: yes
+    allow_unauthenticated: yes
+    allow_downgrade: yes
 
 - name: Snap - Remove useless packages from the cache
   become: true

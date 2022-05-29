@@ -13,7 +13,8 @@
     name: "{{ item.name }}"
     state: absent
     purge: true
-    force: yes
+    allow_unauthenticated: yes
+    allow_downgrade: yes
   loop: "{{ unused_packages }}"
 
 - name: Apt - Remove useless packages from the cache
