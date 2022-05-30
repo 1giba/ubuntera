@@ -6,7 +6,7 @@ galaxy_info:
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
-  issue_tracker_url: http://github.com/1giba/env/issues
+  issue_tracker_url: http://github.com/1giba/ubuntera/issues
 
   license: MIT
 
@@ -24,11 +24,7 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-        - bionic
-        - focal
-    - name: Fedora
-      versions:
-        - 34
+        - jammy
 
   galaxy_tags: ['system', 'development']
   # List tags for your role here, one per line. A tag is a keyword that describes
