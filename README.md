@@ -118,7 +118,7 @@ make zsh  # Run tasks with zsh tag
 #### code
 - call vs codium.
 
-**Example:**
+_Example:_
 
 ```bash
 code ~/projects # same as `codium ~/projects`
@@ -134,7 +134,7 @@ code ~/projects # same as `codium ~/projects`
 #### gh
 - search in bash history.
 
-**Example:**
+_Example:_
 
 ```bash
 gh last-command # same as `history | grep last-command`
@@ -150,7 +150,7 @@ gh last-command # same as `history | grep last-command`
 #### cpv
 - copy with progress bar.
 
-**Example:**
+_Example:_
 
 ```bash
 cpv file1 file2
@@ -159,7 +159,7 @@ cpv file1 file2
 #### del
 - move files to trash.
 
-**Example:**
+_Example:_
 
 ```bash
 del file1 file2
@@ -177,7 +177,7 @@ del file1 file2
 #### dc
 - alias to docker-compose.
 
-**Example:**
+_Example:_
 
 ```bash
 dc run --rm php:8.0-cli-alpine php -ini
@@ -186,13 +186,17 @@ dc run --rm php:8.0-cli-alpine php -ini
 #### ff
 - list files by name.
 
+_Example:_
+
 ```bash
 ff file.php
 ```
 
 #### ss
 - search by name inside files.
-- needed silver searcher.
+- requires silver searcher.
+
+_Example:_
 
 ```bash
 ss hello
