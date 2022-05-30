@@ -122,10 +122,6 @@ extra-packages:
 extra-packages: ## Runs the extra-packages ansible role
 	@$(ANSIBLE) --tags="extra-packages"
 
-firefox-pwa:
-firefox-pwa: ## Runs the firefox-pwa ansible role
-	@$(ANSIBLE) --tags="firefox-pwa"
-
 flameshot:
 flameshot: ## Runs the flameshot ansible role
 	@$(ANSIBLE) --tags="flameshot"
@@ -193,6 +189,10 @@ unused-packages: ## Runs the unused-packages ansible role
 vscodium:
 vscodium: ## Runs the vscodium ansible role
 	@$(ANSIBLE) --tags="vscodium"
+
+whatsdesk:
+whatsdesk: ## Runs the whatsdesk ansible role
+	@$(ANSIBLE) --tags="whatsdesk"
 
 wifi-powersave-mode:
 wifi-powersave-mode: ## Runs the wifi-powersave-mode ansible role

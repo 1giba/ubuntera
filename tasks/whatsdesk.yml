@@ -1,0 +1,6 @@
+---
+- name: WhatsDesk - Install client for WhatsApp
+  become: true
+  apt:
+    deb: >-
+      https://zerkc.gitlab.io/whatsdesk/whatsdesk_0.3.8_amd64.deb

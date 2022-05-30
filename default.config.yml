@@ -163,13 +163,7 @@ configure_flameshot: true
 
 configure_notion: true
 
-configure_firefoxpwa: false
-# https://github.com/filips123/PWAsForFirefox/tags
-firefoxpwa_version: v1.4.0
-pwa_manifests:
-  - https://web.whatsapp.com/binary-transparency-manifest-2.2214.9.json # WhatsApp
-# to change the icon
-pwa_whatsapp_manifest_url: https://web.whatsapp.com/binary-transparency-manifest-2.2214.9.json
+configure_whatsdesk: false # a client for whatsapp
 
 configure_wifi_powersave_mode: true
 wifi_powersave_mode: '2'  # disable powersave

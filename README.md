@@ -69,8 +69,8 @@ make install # install packages
 - silversearcher
 - vim
 - meld
-- WhatsApp (Experimental)
-- Notion (New)
+- Notion
+- WhatsDesk: A client for WhatsApp
 ```
 
 ## Run specific tasks
@@ -84,7 +84,6 @@ make desktop  # Run tasks with desktop tag
 make dev  # Run tasks with dev tag
 make docker  # Run tasks with docker tag
 make extra-packages  # Run tasks with extra-packages tag
-make firefox-pwa  # Run tasks with firefox-pwa tag
 make flameshot  # Run tasks with flameshot tag
 make flatpak  # Run tasks with flatpak tag
 make git  # Run tasks with git tag
@@ -102,8 +101,13 @@ make timeshift  # Run tasks with timeshift tag
 make ulauncher  # Run tasks with ulauncher tag
 make unused-packages  # Run tasks with unused-packages tag
 make vscodium  # Run tasks with vscodium tag
+make whatsdesk  # Run tasks with whatsdesk tag
 make wifi-powersave-mode  # Run tasks with wifi-powersave-mode tag
 make zsh  # Run tasks with zsh tag
+```
+
+```bash
+./uninstall_firefoxpwa.sh # if you've already installed firefoxpwa for whatsapp
 ```
 
 ## Default ZSH Aliases

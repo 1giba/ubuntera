@@ -84,9 +84,9 @@
     - import_tasks: tasks/flameshot.yml
       tags: ['flameshot']
       when: configure_flameshot
-    - import_tasks: tasks/firefox-pwa.yml
-      tags: ['firefox-pwa']
-      when: configure_firefoxpwa
+    - import_tasks: tasks/whatsdesk.yml
+      tags: ['whatsdesk']
+      when: configure_whatsdesk
     - import_tasks: tasks/wifi-powersave-mode.yml
       tags: ['wifi-powersave-mode']
       when: configure_wifi_powersave_mode
