@@ -3,3 +3,7 @@
 {% for zsh_alias in zsh_aliases %}
 alias {{ zsh_alias }}
 {% endfor %}
+
+{% for zsh_helper in zsh_helpers %}
+{{ zsh_helper }}
+{% endfor %}

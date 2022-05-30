@@ -112,23 +112,95 @@ make zsh  # Run tasks with zsh tag
 
 ## Default ZSH Aliases
 
-Examples:
+#### reload
+- reload aliases.
+
+#### code
+- call vs codium.
+
+**Example:**
 
 ```bash
-rez # reload ~/.zshrc file
-code ~/.zshrc # alias to vscodium
-lt  # sort by file size
-mnt # view mounted drives
-gh apt-repository # search bash history
-left  # most recently edited files
-count # count files
-cpv /tmp/src /tmp/dest # copy with progress bar
-del /tmp/error.log # move files to trash
-cg # go to git main level
-drm # remove all stopped containers
-drmi # remove all untagged images
-dc run -it --rm php:8.0-cli-alpine sh # alias to docker-compose
+code ~/projects # same as `codium ~/projects`
 ```
+
+#### lt
+- sort by file size.
+
+#### mnt
+
+- view mounted drives.
+
+#### gh
+- search in bash history.
+
+**Example:**
+
+```bash
+gh last-command # same as `history | grep last-command`
+```
+
+#### left
+- sort by the most recent modified file.
+
+
+#### count
+- count files.
+
+#### cpv
+- copy with progress bar.
+
+**Example:**
+
+```bash
+cpv file1 file2
+```
+
+#### del
+- move files to trash.
+
+**Example:**
+
+```bash
+del file1 file2
+```
+
+#### cg
+- go to git main level.
+
+#### drm
+- remove all stopped containers.
+
+#### drmi
+- remove all untagged images.
+
+#### dc
+- alias to docker-compose.
+
+**Example:**
+
+```bash
+dc run --rm php:8.0-cli-alpine php -ini
+```
+
+#### ff
+- list files by name.
+
+```bash
+ff file.php
+```
+
+#### ss
+- search by name inside files.
+- needed silver searcher.
+
+```bash
+ss hello
+```
+
+#### giz
+- zip only modified and new files.
+
 
 ---
 
