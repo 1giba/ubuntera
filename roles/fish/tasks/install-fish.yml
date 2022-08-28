@@ -1,0 +1,12 @@
+---
+- name: Fish - Install PPA
+  become: true
+  ansible.builtin.apt_repository:
+    repo: ppa:fish-shell/release-3
+    state: present
+
+- name: Fish - Install application
+  become: true
+  apt:
+    name: fish
+    update_cache: yes

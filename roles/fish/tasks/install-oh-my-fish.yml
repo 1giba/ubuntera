@@ -1,0 +1,22 @@
+---
+- name: OH My Fishish - Installer path
+  shell: 'echo "/tmp/install"'
+  register: omf_installer
+
+- name: OH My Fish - Download installer
+  get_url:
+    url: https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install
+    dest: "{{ omf_installer.stdout }}"
+    mode: 0755
+
+- name: OH My Fishish - Get fish shell
+  shell: "which fish"
+  register: fish_shell
+
+- name: OH My Fish - Install OMF
+  shell: "{{ fish_shell.stdout }} {{ omf_installer.stdout }} --path=~/.local/share/omf --config=~/.config/omf"
+
+- name: OH My Fish - Remove the installer
+  file:
+    path: /tmp/install
+    state: absent

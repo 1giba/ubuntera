@@ -1,0 +1,12 @@
+---
+- name: Install Fish
+  import_tasks: install-fish.yml
+
+- name: Configure Fish
+  include_tasks: configure-fish.yml
+
+- name: Install Oh My Fish
+  include_tasks: install-oh-my-fish.yml
+
+- name: Configure Oh My Fish
+  include_tasks: configure-oh-my-fish.yml

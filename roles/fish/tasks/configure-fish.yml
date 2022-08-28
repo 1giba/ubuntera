@@ -1,0 +1,24 @@
+---
+- name: Fish - Get current shell
+  shell: "getent passwd {{ ansible_facts.user_id }} | cut -d: -f7"
+  register: current_shell
+  changed_when: no
+
+- name: Fish - Get fish shell
+  shell: "which fish"
+  register: fish_shell
+
+- name: Fish - Change shell to fish
+  command: chsh --shell {{ fish_shell.stdout }}
+  when: "current_shell.stdout != '/usr/bin/fish'"
+
+- name: Fish - Create aliases
+  command: '{{ fish_shell.stdout }} -c "alias --save {{ item }}"'
+  loop: "{{ fish_aliases }}"
+
+- name: Fish - Create functions
+  shell: |
+    {{ fish_shell.stdout }} -c "function {{ item.name }}
+      {{ item.command }}
+    end && funcsave {{ item.name }}"
+  loop: "{{ fish_functions }}"

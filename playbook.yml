@@ -14,10 +14,9 @@
     # 'skip-ci' allows me to not test that role
     # 'never' is a special tag that is on run when that tag is specified
     # Terminal
-    - role: zsh
-      when: configure_zsh
-      tags: ['terminal', 'zsh']
-      become: true
+    - role: fish
+      when: configure_fish
+      tags: ['terminal', 'fish']
 
     # Docker
     - role: docker

@@ -1,8 +1,8 @@
 ---
 galaxy_info:
-  role_name: zsh
+  role_name: fish
   author: 1giba
-  description: Ansible role to install ZSH, with the oh-my-zsh plugin manager
+  description: Ansible role to install Fish, with the oh-my-fish plugin manager
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value

@@ -122,6 +122,10 @@ extra-packages:
 extra-packages: ## Runs the extra-packages ansible role
 	@$(ANSIBLE) --tags="extra-packages"
 
+fish:
+fish: ## Runs the fish ansible role
+	@$(ANSIBLE) --tags="fish"
+
 flameshot:
 flameshot: ## Runs the flameshot ansible role
 	@$(ANSIBLE) --tags="flameshot"

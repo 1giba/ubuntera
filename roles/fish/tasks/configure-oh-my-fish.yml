@@ -1,0 +1,7 @@
+---
+- name: OH My Fish - Download and update OMF packages
+  git:
+    repo: "{{ item.value }}"
+    dest: "{{ ansible_facts.env.HOME }}/.config/fish/pkgs/{{ item.key }}"
+  loop: "{{ omf_pkgs | dict2items }}"
+  notify: Collect fish functions from packages

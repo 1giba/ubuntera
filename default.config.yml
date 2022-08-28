@@ -52,16 +52,22 @@ codium_extensions:
   - neilbrayfield.php-docblocker
 
   ## Vue.js Development
-  - octref.vetur
+  - johnsoncodehk.volar
 
   ## React Development
   - dsznajder.es7-react-js-snippets
+
+  ## Javascript
+  - dbaeumer.vscode-eslint
 
   ## Code formatter
   - esbenp.prettier-vscode
 
   ## Markdown
   - shd101wyy.markdown-preview-enhanced
+
+  ## .editorconfig
+  - EditorConfig.EditorConfig
 
   ## Infrastructure
   - ms-azuretools.vscode-docker
