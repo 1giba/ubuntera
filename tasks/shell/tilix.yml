@@ -1,0 +1,6 @@
+---
+- name: Tilix - Install terminal
+  become: true
+  apt:
+    name: tilix
+    state: present

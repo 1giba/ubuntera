@@ -1,0 +1,6 @@
+---
+- name: Telegram - Install client
+  become: true
+  community.general.snap:
+    name: telegram-desktop
+    state: present

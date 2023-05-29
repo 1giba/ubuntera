@@ -1,6 +1,0 @@
----
-- name: Kylin - Install desktop
-  become: true
-  apt:
-    update_cache: yes
-

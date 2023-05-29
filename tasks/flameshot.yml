@@ -1,6 +1,0 @@
----
-- name: Flameshot - Install
-  become: true
-  apt:
-    name: flameshot
-    state: present

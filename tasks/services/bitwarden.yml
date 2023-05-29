@@ -1,0 +1,6 @@
+---
+- name: Bitwarden - Install app
+  become: true
+  community.general.snap:
+    name: bitwarden
+    state: present

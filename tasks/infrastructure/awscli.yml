@@ -1,0 +1,8 @@
+---
+- name: AWS - Install client
+  become: true
+  community.general.snap:
+    name: aws-cli
+    channel: v2/candidate
+    classic: true
+      

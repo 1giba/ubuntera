@@ -1,0 +1,7 @@
+---
+#------------------------------------------
+# Budgie
+#
+- name: Budgie - Installation
+  include_tasks: budgie.yml
+  when: desktop_flavour == 'budgie'

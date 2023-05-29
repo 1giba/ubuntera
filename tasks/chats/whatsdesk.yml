@@ -1,0 +1,6 @@
+---
+- name: WhatsDesk - Install client for WhatsApp
+  become: true
+  community.general.snap:
+    name: whatsdesk
+    state: present

@@ -1,0 +1,6 @@
+---
+- name: Postman - Install client
+  become: true
+  community.general.snap:
+    name: postman
+    state: present
