@@ -1,0 +1,6 @@
+---
+- name: Zoom - Install client
+  become: true
+  community.general.snap:
+    name: zoom-client
+    state: present

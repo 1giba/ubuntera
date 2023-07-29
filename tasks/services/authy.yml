@@ -1,0 +1,6 @@
+---
+- name: Authy - Install authenticator
+  become: true
+  community.general.snap:
+    name: authy
+    state: present

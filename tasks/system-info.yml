@@ -1,0 +1,12 @@
+---
+- name: System info - display ansible_os_family
+  debug:
+    msg: "{{ ansible_os_family }}"
+
+- name: System info - display ansible_distribution_release
+  debug:
+    msg: "{{ ansible_distribution_release }}"
+
+- name: System info - display ansible_user
+  debug:
+    msg: "{{ ansible_user }}"

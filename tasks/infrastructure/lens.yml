@@ -1,0 +1,7 @@
+---
+- name: Lens - Install client
+  become: true
+  community.general.snap:
+    name: kontena-lens
+    classic: true
+      

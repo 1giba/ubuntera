@@ -1,0 +1,5 @@
+---
+- name: Chromium - Install browser
+  become: true
+  community.general.snap:
+    name: chromium

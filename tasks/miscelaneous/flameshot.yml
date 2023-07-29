@@ -1,0 +1,6 @@
+---
+- name: Flameshot - Install app
+  become: true
+  apt:
+    name: flameshot
+    state: present

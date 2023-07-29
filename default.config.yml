@@ -1,37 +1,24 @@
 ---
-# used in URL of some deb packages on github
-host_arch: "amd64"
+# system arch -------------------------------------------------------------------
+host_arch: 'amd64'
+
+# browsers ----------------------------------------------------------------------
+configure_chromium: true
+configure_edge: true
+
+# chats -------------------------------------------------------------------------
+configure_slack: true
+configure_telegram: true
+configure_whatsdesk: true
+configure_zoom: true
 
 # desktop flavours --------------------------------------------------------------
-configure_desktop: false
-# if you set true to configure_desktop, you need to declare the selected_desktop
-# selected_desktop: 'budgie'
-# selected_desktop: 'deepin' soon
-# selected_desktop: 'kylin'
+configure_desktop: true
+# if you set true to configure_desktop, you need to define the desktop_flavour
+desktop_flavour: 'budgie'
 
 # dev tools ---------------------------------------------------------------------
-configure_hyper: true # https://hyper.is
-# based on https://github.com/bnb/awesome-hyper
-hyper_plugins:
-  - hypercwd
-  - hyper-search
-  - hyper-pane
-  - hyper-snazzy
-
-# you need to declare the git_user and git_email to handle with git
-# create a config.yml file to define it.
-# git_user: "John Doe"
-# git_email: johndoe@example.com
-configure_projects: false
-# projects:
-#   - repo: git@github.com:1codehappy/laravel-api
-#     dest: "~/code/lpi"
-#   - repo: git@github.com:1codehappy/laravel-workspace
-#     dest: "~/code/lws"
-#   - repo: git@github.com:1giba/env
-#     dest: "~/code/env"
-
-configure_codium: true # https://vscodium.com
+configure_codium: true
 codium_preferences: |
   {
     "workbench.iconTheme": "material-icon-theme",
@@ -43,6 +30,7 @@ configure_codium_extensions: true
 codium_extensions:
   ## Ansible, Docker-Compose, etc.
   - redhat.vscode-yaml
+  - redhat.vscode-xml
 
   ## General Development
   - oderwat.indent-rainbow
@@ -71,126 +59,79 @@ codium_extensions:
   - Equinusocio.vsc-material-theme
   - PKief.material-icon-theme
 
-# docker --------------------------------------------------------------------------
+configure_projects: false
+# projects:
+#   - repo: git@github.com:1codehappy/laravel-api
+#     dest: "~/Workspace/lpi"
+#   - repo: git@github.com:1codehappy/laravel-workspace
+#     dest: "~/Workspace/lws"
+#   - repo: git@github.com:1giba/env
+#     dest: "~/Workspace/env"
+
+configure_git: true
+# git_user: YourUser
+# git_email: Your@Email
+git_user: 1giba
+git_email: olamundo@gmail.com
+
+configure_postman: true
+
+# infrastructure ------------------------------------------------------------------
+configure_awscli: true
 configure_docker: true
-docker_compose_version: v2.4.1
+configure_kubectl: false # Unavailable at kubernetes repository for now.
+configure_lens: false    # Can't install lens, depends on kubectl.
+configure_ngrok: true
 
-# infra tools ---------------------------------------------------------------------
-configure_local_cluster: true # kind, kubectl, helm
-configure_lens: true
-configure_stacer: true
-configure_terraform: true
-configure_timeshift: true
-
-# zsh ------------------------------------------------------------------------------
-configure_zsh: true
-zsh_theme: robbyrussell
-zsh_custom_shell_command: "false"
-# useful when users are bound to external systems (i.e. active directory)
-# zsh_custom_shell_command: "true"
-# zsh_default_shell_command: "/opt/pbis/bin/config LoginShellTemplate /usr/bin/zsh"
-zsh_aliases:
-  # https://opensource.com/article/19/7/bash-aliases
-  # - ls='ls -F'
-  # - ll='ls -lh'
-  - reload='source $HOME/.zshrc' # reload ~/.zshrc file
-  - code='codium ' # alias to vscodium
-  - lt='du -sh * | sort -h' # sort by file size
-  - mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | egrep ^/dev/ | sort" # view mounted drives
-  - gh='history|grep' # search bash history
-  - left='ls -t -1' # most recently edited files
-  - count='find . -type f | wc -l' # count files
-  - cpv='rsync -ah --info=progress2' # copy with progress bar
-  - del='mv --force -t ~/.local/share/Trash ' # move files to trash
-  - cg='cd `git rev-parse --show-toplevel`'  # go to git main level
-  - drm='docker rm $(docker ps -a -q)' # remove all stopped containers
-  - drmi='docker images -q --filter "dangling=true" | xargs docker rmi' # remove all untagged images
-  - dc='docker-compose ' # alias to docker-compose
-  - giz='zip -r $(date +"%Y%m%d%H%M%S").zip $(git ls-files --modified && git ls-files --others --exclude-standard --exclude="*.zip")'
-zsh_helpers:
-  - ff() { sudo find . -name "*$1*" -ls; }
-  - ss() { sudo ag -i "$1" . }
-
-ohmyzsh_bundles:
-  # Bundles from the default repo (robbyrussell's oh-my-zsh) only need a name
-  # https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
-  #
-  # `name` is required (any valid file name will do so long as it's unique for the bundles)
-  # `url` is git username/repo
-  # `version` is git release and is required if `url` is define
-  # - name: ansible
-  # - name: aws
-  # - name: docker
-  # - name: docker-compose
-  - name: gitfast
-  # - name: pipenv
-  # Syntax highlighting bundle.
-  - name: 'zsh-syntax-highlighting'
-    git:
-      user: zsh-users
-      repo: zsh-syntax-highlighting
-      version: 0.7.1
-  # # Autosuggestions
-  # - name: zsh-autosuggestions # `name` is required (any valid file name will do so long as it's unique for the bundles)
-  #   repo:
-  #     user: zsh-users
-  #     repo: zsh-autosuggestions
-  #     version: v0.6.4
-
-# Apps --------------------------------------------------------------
-configure_snap_uninstall: true
-
-configure_flatpak: true
-flatpaks:
-  - "org.chromium.Chromium" # Chromium
-  - "org.chromium.Chromium.Codecs" # Codecs
-  - "com.github.tchx84.Flatseal"  # Manage Flatpak permissions
-  - "com.uploadedlobster.peek"  # Simple screen recorder with an easy to use interface
-  - "com.github.junrrein.PDFSlicer"
-  - "com.spotify.Client"  # Music
-  - "com.slack.Slack" # Slack chat
-  - "com.bitwarden.desktop"  # A secure and free password manager for all of your devices
-  - "us.zoom.Zoom" # Video conference tool
-  - "com.getpostman.Postman" # API development environment
-  - "com.bitwarden.desktop" # Bitwarden desktop
-  - "org.mozilla.firefox" # if you uninstall snap, you can add firefox
-
-configure_apt_uninstall: false
-# unused_packages:
-#   - name: "foo"
-#     repo: ppa:foo
-
-# Miscelaneous ------------------------------------------------------
+# miscelaneous -------------------------------------------------------------------
+configure_flameshot: true
+configure_morgen: true
+configure_notion: true
 configure_ulauncher: true
 
-configure_flameshot: true
-
-configure_notion: true
-
-configure_whatsdesk: false # a client for whatsapp
-
 configure_wifi_powersave_mode: true
-wifi_powersave_mode: '2'  # disable powersave
-# https://twitter.com/dominucco/status/1410181146940411905?s=20
-# According to https://gist.github.com/jcberthon/ea8cfe278998968ba7c5a95344bc8b55
-# From the source code: wifi.powersave can have the following value:
-#
-#    NM_SETTING_WIRELESS_POWERSAVE_DEFAULT (0): use the default value
-#    NM_SETTING_WIRELESS_POWERSAVE_IGNORE (1): don't touch existing setting
-#    NM_SETTING_WIRELESS_POWERSAVE_DISABLE (2): disable powersave
-#    NM_SETTING_WIRELESS_POWERSAVE_ENABLE (3): enable powersave
+wifi_powersave_mode: '2'
 
-# Install packages from other package managers.
-# Note: You are responsible for making sure the required package managers are
-# installed, eg. through apt.
-apt_packages:
-  # Main
-  - name: axel # https://github.com/axel-download-accelerator/axel
-  - name: silversearcher-ag # https://github.com/ggreer/the_silver_searcher
-  - name: vim # editor
-  - name: meld #  diff
-  # Audio Control
-  - name: pulseaudio
-  - name: pavucontrol
+# services -----------------------------------------------------------------------
+configure_authy: true
+configure_bitwarden: true
+configure_spotify: true
+configure_youtube_music: true
 
-configure_airpods_pro_bluetooth_fix: false
+# shell -- -----------------------------------------------------------------------
+configure_fish: true
+configure_omf: true
+configure_tilix: true
+
+# installing and uninstalling ----------------------------------------------------
+configure_apt_install: true
+apt_install:
+  - name: curl
+  - name: htop
+  - name: jq
+  - name: meld
+  - name: net-tools
+  - name: silversearcher-ag
+  - name: traceroute
+  - name: vlc
+  - name: vim
+configure_apt_uninstall: true
+apt_uninstall:
+  - name: atril
+  - name: aisleriot
+  - name: celluloid
+  - name: cheese
+  - name: gnome-2048
+  - name: gnome-mahjongg
+  - name: gnome-mines
+  - name: gnome-screenshot
+  - name: gnome-sudoku
+  - name: gnome-terminal
+  - name: goodvibes
+  - name: "libreoffice*"
+  - name: lollypop
+  - name: magnus
+  - name: mate-calc
+  - name: nautilus
+  - name: parole
+  - name: rhythmbox

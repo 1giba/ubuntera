@@ -1,0 +1,6 @@
+---
+- name: Spotify - Install app
+  become: true
+  community.general.snap:
+    name: spotify
+    state: present

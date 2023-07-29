@@ -1,0 +1,6 @@
+---
+- name: Ngrok - Install client
+  become: true
+  community.general.snap:
+    name: ngrok
+      

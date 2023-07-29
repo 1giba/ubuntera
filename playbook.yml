@@ -10,89 +10,108 @@
         - "{{ playbook_dir }}/config.yml"
       tags: ['always']
 
-  roles:
-    # 'skip-ci' allows me to not test that role
-    # 'never' is a special tag that is on run when that tag is specified
-    # Terminal
-    - role: zsh
-      when: configure_zsh
-      tags: ['terminal', 'zsh']
-      become: true
-
-    # Docker
-    - role: docker
-      when: configure_docker
-      tags: ['terminal', 'docker', 'skip-ci']
-      become: true
-
-    # Debug
-    - role: debug
-      tags: ['debug']
-
   tasks:
-    # Desktop
-    - import_tasks: tasks/desktop/main.yml
-      tags: ['desktop']
+    # System info
+    - import_tasks: tasks/system-info.yml
+      tags: ['system-info']
+    # Browsers
+    - import_tasks: tasks/browsers/chromium.yml
+      tags: ['browsers', 'chromium']
+      when: configure_chromium
+    - import_tasks: tasks/browsers/edge.yml
+      tags: ['browsers', 'edge']
+      when: configure_edge
+    # Chats
+    - import_tasks: tasks/chats/slack.yml
+      tags: ['chats', 'slack']
+      when: configure_slack
+    - import_tasks: tasks/chats/telegram.yml
+      tags: ['chats', 'telegram']
+      when: configure_telegram
+    - import_tasks: tasks/chats/whatsdesk.yml
+      tags: ['chats', 'whatsdesk']
+      when: configure_whatsdesk
+    - import_tasks: tasks/chats/zoom.yml
+      tags: ['chats', 'zoom']
+      when: configure_zoom
+    # Desktop flavours
+    - import_tasks: tasks/desktop-flavours/main.yml
+      tags: ['desktop-flavours']
       when: configure_desktop
-    # Dev tools
-    - import_tasks: tasks/dev/codium.yml
-      tags: ['dev', 'codium']
-    - import_tasks: tasks/dev/codium-extensions.yml
-      tags: ['dev', 'codium', 'codium-extensions']
+    # Devevelopment tools
+    - import_tasks: tasks/development-tools/codium.yml
+      tags: ['dev-tools', 'codium']
+    - import_tasks: tasks/development-tools/codium-extensions.yml
+      tags: ['dev-tools', 'codium', 'codium-extensions']
       when: configure_codium_extensions
-    - import_tasks: tasks/dev/codium-preferences.yml
-      tags: ['dev', 'codium', 'codium-preferences']
+    - import_tasks: tasks/development-tools/codium-preferences.yml
+      tags: ['dev-tools', 'codium', 'codium-preferences']
       when: configure_codium_extensions
-    - import_tasks: tasks/dev/git.yml
-      tags: ['dev', 'git']
-    - import_tasks: tasks/dev/hyper.yml
-      tags: ['dev', 'hyper']
-    # Infra tools
-    - import_tasks: tasks/infra/kind.yml
-      tags: ['infra', 'kind']
-      when: configure_local_cluster
-    - import_tasks: tasks/infra/kubectl.yml
+    - import_tasks: tasks/development-tools/git.yml
+      tags: ['dev-tools', 'git']
+      when: configure_git
+    - import_tasks: tasks/development-tools/postman.yml
+      tags: ['dev-tools', 'postman']
+      when: configure_postman
+    # Infrastructure
+    - import_tasks: tasks/infrastructure/awscli.yml
+      tags: ['infra', 'awscli']
+      when: configure_awscli
+    - import_tasks: tasks/infrastructure/docker.yml
+      tags: ['infra', 'docker']
+      when: configure_docker
+    - import_tasks: tasks/infrastructure/kubectl.yml
       tags: ['infra', 'kubectl']
-      when: configure_local_cluster
-    - import_tasks: tasks/infra/helm.yml
-      tags: ['infra', 'helm']
-      when: configure_local_cluster
-    - import_tasks: tasks/infra/lens.yml
+      when: configure_kubectl
+    - import_tasks: tasks/infrastructure/lens.yml
       tags: ['infra', 'lens']
       when: configure_lens
-    - import_tasks: tasks/infra/stacer.yml
-      tags: ['infra', 'stacer']
-      when: configure_stacer
-    - import_tasks: tasks/infra/terraform.yml
-      tags: ['infra', 'terraform']
-      when: configure_terraform
-    - import_tasks: tasks/infra/timeshift.yml
-      tags: ['infra', 'timeshift']
-      when: configure_timeshift
-    # Misc
-    - import_tasks: tasks/apt-uninstall.yml
-      tags: ['unused-packages']
-      when: configure_apt_uninstall
-    - import_tasks: tasks/extra-packages.yml
-      tags: ['extra-packages']
-    - import_tasks: tasks/flatpak.yml
-      tags: ['flatpak']
-      when: configure_flatpak
-    - import_tasks: tasks/ulauncher.yml
-      tags: ['ulauncher']
-      when: configure_ulauncher
-    - import_tasks: tasks/flameshot.yml
-      tags: ['flameshot']
+    - import_tasks: tasks/infrastructure/ngrok.yml
+      tags: ['infra', 'ngrok']
+      when: configure_ngrok
+    # Miscelaneous
+    - import_tasks: tasks/miscelaneous/flameshot.yml
+      tags: ['misc', 'flameshot']
       when: configure_flameshot
-    - import_tasks: tasks/whatsdesk.yml
-      tags: ['whatsdesk']
-      when: configure_whatsdesk
-    - import_tasks: tasks/wifi-powersave-mode.yml
-      tags: ['wifi-powersave-mode']
-      when: configure_wifi_powersave_mode
-    - import_tasks: tasks/snap-uninstall.yml
-      tags: ['snap-uninstall']
-      when: configure_snap_uninstall
-    - import_tasks: tasks/notion.yml
-      tags: ['notion']
+    - import_tasks: tasks/miscelaneous/notion.yml
+      tags: ['misc', 'notion']
       when: configure_notion
+    - import_tasks: tasks/miscelaneous/solaar.yml
+      tags: ['misc', 'solaar']
+      when: configure_solaar
+    - import_tasks: tasks/miscelaneous/ulauncher.yml
+      tags: ['misc', 'ulauncher']
+      when: configure_ulauncher
+    - import_tasks: tasks/miscelaneous/wifi-powersave-mode.yml
+      tags: ['misc', 'powersave']
+      when: configure_wifi_powersave_mode
+    # Services
+    - import_tasks: tasks/services/authy.yml
+      tags: ['services', 'authy']
+      when: configure_authy
+    - import_tasks: tasks/services/bitwarden.yml
+      tags: ['services', 'bitwarden']
+      when: configure_bitwarden
+    - import_tasks: tasks/services/spotify.yml
+      tags: ['services', 'spotify']
+      when: configure_spotify
+    - import_tasks: tasks/services/youtube-music.yml
+      tags: ['services', 'youtube-music']
+      when: configure_youtube_music
+    # Shell
+    - import_tasks: tasks/shell/fish.yml
+      tags: ['shell', 'fish']
+      when: configure_fish
+    - import_tasks: tasks/shell/oh-my-fish.yml
+      tags: ['shell', 'oh-my-fish']
+      when: configure_omf
+    - import_tasks: tasks/shell/tilix.yml
+      tags: ['shell', 'tilix']
+      when: configure_tilix
+    # Installing and uninstalling packages
+    - import_tasks: tasks/apt-install.yml
+      tags: ['apt-install']
+      when: configure_apt_install
+    - import_tasks: tasks/apt-uninstall.yml
+      tags: ['apt-uninstall']
+      when: configure_apt_uninstall

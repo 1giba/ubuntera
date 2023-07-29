@@ -1,0 +1,13 @@
+---
+- name: Ulauncher - Add ulauncher stable repository from PPA
+  become: true
+  ansible.builtin.apt_repository:
+    repo: ppa:agornostal/ulauncher
+
+- name: Ulauncher - Install app
+  become: true
+  ansible.builtin.apt:
+    name: ulauncher
+    state: present
+    update_cache: "yes"
+    

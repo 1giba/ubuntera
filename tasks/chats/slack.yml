@@ -1,0 +1,6 @@
+---
+- name: Slack Chat - Install client
+  become: true
+  community.general.snap:
+    name: slack
+    state: present

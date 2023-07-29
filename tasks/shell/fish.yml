@@ -1,0 +1,10 @@
+---
+- name: Fish - Install shell
+  become: true
+  apt:
+    name: fish
+    state: present
+
+- name: Fish - Setting fish as default shell 
+  become: true
+  command: "chsh -s /usr/bin/fish"

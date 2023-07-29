@@ -1,0 +1,10 @@
+- name: Oh My Fish - Clone repo
+  git:
+    repo: 'https://github.com/oh-my-fish/oh-my-fish.git'
+    dest: ~/.local/share/git/oh-my-fish
+
+- name: Oh My Fish - Install framework
+  shell:
+    cmd: "bin/install --offline --noninteractive --yes"
+    executable: /usr/bin/fish
+    chdir: ~/.local/share/git/oh-my-fish

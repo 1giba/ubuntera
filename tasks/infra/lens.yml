@@ -1,9 +1,0 @@
----
-- name: Lens - Get latest release
-  uri:
-    url: https://api.k8slens.dev/binaries/latest.json
-  register: lens_latest
-
-- name: Lens - Install package
-  apt:
-    deb: https://api.k8slens.dev/binaries/Lens-{{lens_latest.version}}.amd64.deb
