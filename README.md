@@ -1,6 +1,6 @@
 # Ubuntera
 
-My Ubuntu 22.04 development environment for laptops and desktops based on [ianclearly/ubuntu-dev-playbook](https://github.com/ianclearly/ubuntu-dev-playbook).
+My Ubuntu 23.04 development environment for laptops and desktops based on [ianclearly/ubuntu-dev-playbook](https://github.com/ianclearly/ubuntu-dev-playbook).
 
 ![My desktop](https://raw.githubusercontent.com/1giba/ubuntera/master/assets/imgs/desktop.png "My desktop")
 
