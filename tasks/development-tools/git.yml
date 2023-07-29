@@ -31,9 +31,3 @@
     value: "{{ git_email }}"
   when: git_email
 
-#------------------------------------------
-# Clone repositories
-#
-- name: Git - clone
-  include_tasks: clone-repository.yml
-  when: configure_projects

@@ -4,7 +4,7 @@ host_arch: 'amd64'
 
 # browsers ----------------------------------------------------------------------
 configure_chromium: true
-configure_edge: false # Unavailable at microsoft repository for now.
+configure_edge: true
 
 # chats -------------------------------------------------------------------------
 configure_slack: true

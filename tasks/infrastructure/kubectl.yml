@@ -1,5 +1,6 @@
 ---
 - name: Kubectl - Install apt package dependencies
+  become: true
   ansible.builtin.apt:
     name:
       - ca-certificates
@@ -7,18 +8,21 @@
     state: present
 
 - name: Kubectl - Add GPG key
+  become: true
   ansible.builtin.apt_key:
     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
     state: present
     keyring: /etc/apt/keyrings/kubernetes-archive-keyring.gpg
 
 - name: Kubectl - Add repository
+  become: true
   ansible.builtin.apt_repository:
     repo: deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-jessie main
     state: present
     filename: kubernetes
 
 - name: Kubectl - Install apt package
+  become: true
   apt:
     name: kubectl
     state: latest

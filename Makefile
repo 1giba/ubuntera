@@ -173,10 +173,6 @@ misc:
 misc: ## Runs the misc ansible role
 	@$(ANSIBLE) --tags="misc"
 
-morgen:
-morgen: ## Runs the morgen ansible role
-	@$(ANSIBLE) --tags="morgen"
-
 ngrok:
 ngrok: ## Runs the ngrok ansible role
 	@$(ANSIBLE) --tags="ngrok"
@@ -197,10 +193,6 @@ powersave:
 powersave: ## Runs the wifi powersave mode ansible role
 	@$(ANSIBLE) --tags="powersave"
 
-git-clone:
-git-clone: ## Runs the git clone ansible role
-	@$(ANSIBLE) --tags="git-clone"
-
 services:
 services: ## Runs the services ansible role
 	@$(ANSIBLE) --tags="services"
@@ -212,6 +204,10 @@ shell: ## Runs the shell ansible role
 slack:
 slack: ## Runs the slack ansible role
 	@$(ANSIBLE) --tags="slack"
+
+solaar:
+solaar: ## Runs the solaar ansible role
+	@$(ANSIBLE) --tags="solaar"
 
 spotify:
 spotify: ## Runs the spotify ansible role

@@ -50,9 +50,6 @@
     - import_tasks: tasks/development-tools/git.yml
       tags: ['dev-tools', 'git']
       when: configure_git
-    - import_tasks: tasks/development-tools/git-clone.yml
-      tags: ['dev-tools', 'git-clone']
-      when: configure_projects
     - import_tasks: tasks/development-tools/postman.yml
       tags: ['dev-tools', 'postman']
       when: configure_postman
@@ -76,12 +73,12 @@
     - import_tasks: tasks/miscelaneous/flameshot.yml
       tags: ['misc', 'flameshot']
       when: configure_flameshot
-    - import_tasks: tasks/miscelaneous/morgen.yml
-      tags: ['misc', 'morgen']
-      when: configure_morgen
     - import_tasks: tasks/miscelaneous/notion.yml
       tags: ['misc', 'notion']
       when: configure_notion
+    - import_tasks: tasks/miscelaneous/solaar.yml
+      tags: ['misc', 'solaar']
+      when: configure_solaar
     - import_tasks: tasks/miscelaneous/ulauncher.yml
       tags: ['misc', 'ulauncher']
       when: configure_ulauncher

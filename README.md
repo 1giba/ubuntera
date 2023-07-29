@@ -155,6 +155,7 @@ configure_ngrok: false    # default: `true`
 
 - Flameshot
 - Notion
+- Solaar
 - Ulauncher
 - Wifi Powersave mode
 
@@ -162,14 +163,16 @@ configure_ngrok: false    # default: `true`
 make misc       # install all miscelaneous
 make flameshot  # install flameshot
 make notion     # install notion
-make ulauncher  # install ulauncher
 make powersave  # install powersave
+make solaar     # install solaar
+make ulauncher  # install ulauncher
 ```
 Edit the `config.yml` file if you don't need these:
 ```yml
 configure_flameshot: false            # default: `true`
 configure_notion: false               # default: `true`
 configure_ulauncher: false            # default: `true`
+configure_solaar: false               # default: `true`
 configure_wifi_powersave_mode: false  # default: `true`
 ```
 #### Services
@@ -223,7 +226,6 @@ configure_tilix: false # default: `true`
 - meld
 - net-tools
 - silversearcher-ag
-- soolar
 - traceroute
 - vlc
 - vim
@@ -245,7 +247,6 @@ apt_install:
 #   - name: meld
   - name: net-tools
   - name: silversearcher-ag
-#   - name: soolar
   - name: traceroute
 #   - name: vlc
   - name: vim
