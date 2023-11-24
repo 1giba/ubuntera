@@ -59,15 +59,6 @@ codium_extensions:
   - Equinusocio.vsc-material-theme
   - PKief.material-icon-theme
 
-configure_projects: false
-# projects:
-#   - repo: git@github.com:1codehappy/laravel-api
-#     dest: "~/Workspace/lpi"
-#   - repo: git@github.com:1codehappy/laravel-workspace
-#     dest: "~/Workspace/lws"
-#   - repo: git@github.com:1giba/env
-#     dest: "~/Workspace/env"
-
 configure_git: true
 # git_user: YourUser
 # git_email: Your@Email
@@ -79,15 +70,15 @@ configure_postman: true
 # infrastructure ------------------------------------------------------------------
 configure_awscli: true
 configure_docker: true
-configure_kubectl: false # Unavailable at kubernetes repository for now.
-configure_lens: false    # Can't install lens, depends on kubectl.
+configure_kubectl: true
+configure_lens: true
 configure_ngrok: true
 
 # miscelaneous -------------------------------------------------------------------
 configure_flameshot: true
-configure_morgen: true
 configure_notion: true
 configure_ulauncher: true
+configure_solaar: true
 
 configure_wifi_powersave_mode: true
 wifi_powersave_mode: '2'
